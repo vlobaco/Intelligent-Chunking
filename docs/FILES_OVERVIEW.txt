@@ -1,0 +1,189 @@
+AI-Enhanced RAG Chunking System - Complete File Overview
+=========================================================
+
+CORE SYSTEM FILES
+-----------------
+1. rag_chunker.py (16 KB)
+   - DocumentChunker: Main chunking logic
+   - ChunkMetadata: 15+ metadata fields per chunk
+   - EnhancedChunk: Combines content + AI context
+   - EnhancedRAGChunker: Orchestrates the pipeline
+   Purpose: Document processing and chunk creation
+
+2. ai_context_generator.py (11 KB)
+   - AnthropicContextGenerator: Claude API integration
+   - Generates contextual summaries
+   - Creates HyDE questions
+   - Extracts entities and topics
+   - Supports async batch processing
+   Purpose: AI-powered context enhancement
+
+3. vector_store.py (15 KB)
+   - EmbeddingGenerator: Creates vector embeddings
+   - VectorStore: In-memory vector database
+   - RAGSearchEngine: High-level search interface
+   - SearchResult: Structured search results
+   Purpose: Embedding generation and semantic search
+
+4. config.py (6 KB)
+   - RAGConfig: Central configuration class
+   - Domain-specific presets (Technical, Legal, Academic, etc.)
+   - Filter presets for common queries
+   Purpose: Easy configuration and customization
+
+DOCUMENTATION FILES
+-------------------
+5. README.md (12 KB)
+   - Complete project overview
+   - Installation instructions
+   - API reference
+   - Configuration options
+   - Integration examples
+   - Troubleshooting guide
+   Purpose: Main documentation
+
+6. USAGE_GUIDE.md (13 KB)
+   - 7 real-world use cases with code
+   - Technical documentation search
+   - Multi-document Q&A
+   - Compliance filtering
+   - Hybrid search
+   - Batch processing
+   - Citation generation
+   - Domain-specific search
+   Purpose: Practical implementation examples
+
+7. ARCHITECTURE.md (16 KB)
+   - System architecture diagrams
+   - Data flow diagrams
+   - Component interaction maps
+   - Metadata structure
+   - Filter types explained
+   - Extension points
+   - Integration examples
+   Purpose: System design reference
+
+8. PROJECT_SUMMARY.md (8 KB)
+   - High-level overview
+   - Key innovations explained
+   - Quick reference
+   - File listing
+   Purpose: Executive summary
+
+EXAMPLE & UTILITY FILES
+------------------------
+9. pipeline_example.py (13 KB)
+   - Complete end-to-end demonstration
+   - Processes sample document
+   - Builds search index
+   - Demonstrates various searches
+   - Shows metadata filtering
+   Purpose: Working example of the full pipeline
+
+10. quickstart.py (8 KB)
+    - Interactive setup script
+    - Dependency checking
+    - API key configuration
+    - Runs demo
+    - Processes custom documents
+    Purpose: Easy getting started experience
+
+SUPPORTING FILES
+----------------
+11. requirements.txt (902 B)
+    - anthropic>=0.40.0
+    - sentence-transformers>=2.2.0
+    - numpy>=1.24.0
+    - Optional dependencies listed
+    Purpose: Dependency management
+
+12. enhanced_chunks.json (34 KB)
+    - Sample output from demo
+    - Shows chunk structure
+    - Example metadata
+    - AI-generated context examples
+    Purpose: Reference output format
+
+13. search_index.pkl (61 KB)
+    - Sample vector store
+    - Pre-built index from demo
+    - Can be loaded for testing
+    Purpose: Example search index
+
+FILES_OVERVIEW.txt (this file)
+    - Complete file listing
+    - Purpose of each file
+    - Quick navigation guide
+
+TOTAL: 14 files, ~220 KB
+
+QUICK NAVIGATION GUIDE
+----------------------
+
+Want to...                          → Start with...
+-------------------------------------------------
+Understand the system              → PROJECT_SUMMARY.md
+Get started quickly                → quickstart.py or README.md
+See working examples               → USAGE_GUIDE.md
+Understand the architecture        → ARCHITECTURE.md
+Modify chunking logic              → rag_chunker.py
+Change AI context generation       → ai_context_generator.py
+Customize search                   → vector_store.py
+Adjust configuration               → config.py
+Run a complete example             → pipeline_example.py
+Install dependencies               → requirements.txt
+See sample output                  → enhanced_chunks.json
+
+FILE DEPENDENCIES
+-----------------
+rag_chunker.py
+└── No dependencies (standalone)
+
+ai_context_generator.py
+├── rag_chunker.py (for ChunkMetadata)
+└── anthropic (optional, falls back to mock)
+
+vector_store.py
+├── rag_chunker.py (for EnhancedChunk)
+├── sentence_transformers (optional)
+└── numpy
+
+config.py
+└── No dependencies (standalone)
+
+pipeline_example.py
+├── rag_chunker.py
+├── ai_context_generator.py
+└── vector_store.py
+
+quickstart.py
+├── All above files
+└── Used for setup and testing
+
+TYPICAL WORKFLOW
+----------------
+1. Install: pip install -r requirements.txt
+2. Configure: Edit config.py or use presets
+3. Process: Use EnhancedRAGChunker to chunk documents
+4. Enhance: Use AnthropicContextGenerator for AI context
+5. Index: Use RAGSearchEngine to build search index
+6. Search: Query the index with filters
+7. Use results: Extract content, references, metadata
+
+CUSTOMIZATION POINTS
+--------------------
+- Chunk size and overlap (config.py)
+- AI model and prompts (ai_context_generator.py)
+- Embedding model (vector_store.py)
+- Metadata fields (rag_chunker.py)
+- Filter logic (vector_store.py)
+- Search ranking (vector_store.py)
+
+INTEGRATION POINTS
+------------------
+- Vector stores: Modify VectorStore class
+- Embedding models: Modify EmbeddingGenerator
+- AI backends: Modify AnthropicContextGenerator
+- Document parsers: Add to DocumentChunker
+- LLM frameworks: See ARCHITECTURE.md examples
+
