@@ -505,8 +505,8 @@ If you use this system in research, please cite:
 ```bibtex
 @software{ai_enhanced_rag_chunker,
   title={AI-Enhanced RAG Chunking System},
-  author={Your Name},
-  year={2024},
+  author={Victor Lobaco},
+  year={2025},
   url={https://github.com/yourusername/rag-chunking-system}
 }
 ```
